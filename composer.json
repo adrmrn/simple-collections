@@ -1,0 +1,34 @@
+{
+  "name": "adrmrn/simple-collections",
+  "type": "library",
+  "description": "Library with simple generics collections inspired by Java/C#.",
+  "keywords": ["generics", "collection"],
+  "license": "MIT",
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.5"
+  },
+  "authors": [
+    {
+      "name": "Adrian M",
+      "homepage": "https://github.com/adrmrn",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "classmap": [],
+    "psr-4": {
+      "Adrmrn\\SimpleCollections\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ],
+    "psr-4": {
+      "Adrmrn\\SimpleCollections\\Tests\\": "tests/"
+    }
+  }
+}
