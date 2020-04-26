@@ -6,7 +6,7 @@ namespace Adrmrn\SimpleCollections;
 use Adrmrn\SimpleCollections\Exception\UnsupportedCollectionTypeException;
 use Adrmrn\SimpleCollections\Type\TypeFactory;
 
-abstract class AbstractCollection implements \Countable, \IteratorAggregate
+abstract class AbstractCollection implements Collection
 {
     /**
      * @var Type
