@@ -9,6 +9,7 @@ use Adrmrn\SimpleCollections\Exception\IllegalItemTypeException;
 use Adrmrn\SimpleCollections\Exception\IndexOutOfBoundsException;
 use Adrmrn\SimpleCollections\Exception\UnsupportedCollectionTypeException;
 use Adrmrn\SimpleCollections\Tests\Fake\ExampleClass;
+use Adrmrn\SimpleCollections\Tests\Fake\MyIntegerArrayList;
 use Adrmrn\SimpleCollections\Type;
 use Adrmrn\SimpleCollections\Type\ArrayType;
 use Adrmrn\SimpleCollections\Type\BooleanType;
@@ -20,6 +21,24 @@ use PHPUnit\Framework\TestCase;
 
 class ArrayListTest extends TestCase
 {
+    public function testCreation_CreateInstanceOfCustomArrayListOfIntegerType_ArrayListCreated(): void
+    {
+        // arrange
+        $initialCollection = [0, 7, -4, 56];
+
+        // act
+        $list = new MyIntegerArrayList($initialCollection);
+        $count = $list->count();
+        $type = $list->type();
+
+        // assert
+        $this->assertArrayListContainsAllItems($list, $initialCollection);
+        $expectedCount = 4;
+        $this->assertSame($expectedCount, $count);
+        $expectedType = new IntegerType();
+        $this->assertEquals($expectedType, $type);
+    }
+
     public function testCreation_CreateEmptyArrayListOfIntegerType_EmptyArrayListCreated(): void
     {
         // act
