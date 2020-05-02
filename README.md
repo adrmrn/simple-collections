@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/adrmrn/simple-collections.svg?branch=master)](https://travis-ci.com/adrmrn/simple-collections)
 
 # Simple Collections
-As you probably know, PHP language doesn’t support generic collections. Simple Collections library tries dealing with it and providing set of collections typed through constructor. There are few collections inspired by languages like Java or C#: `Queue`, `Stack` and `ArrayList`.
+As you probably know, PHP language doesn’t support generic collections. Simple Collections library tries dealing with it and providing set of collection classes typed through constructor. There are few collections inspired by languages like Java or C#: `Queue`, `Stack` and `ArrayList`.
 
 ## Collections
 Each specific collection implements `Collection` interface with basic operations: `contains($item)`, `count()`, `isEmpty()`, `toArray()`, `clear()`. 
