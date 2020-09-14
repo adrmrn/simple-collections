@@ -4,10 +4,6 @@ grumphp:
             standard: PSR12
             ignore_patterns: [ ./tests/* ]
         phpunit: ~
-#        phpstan:
-#            level: 2
-#            ignore_patterns: [ ./tests/* ]
-#        clover_coverage:
-#            clover_file: /tmp/clover.xml
-#            level: 100
-#  { clover_coverage: null, infection: null, phpmd: null, phpstan: null }
+        phpstan:
+            level: 5
+            ignore_patterns: [ ./tests/* ]
