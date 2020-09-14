@@ -39,6 +39,56 @@ class ArrayListTest extends TestCase
         $this->assertEquals($expectedType, $type);
     }
 
+    public function testSort_SortCustomArrayListOfIntegerType_ArrayListSorted(): void
+    {
+        // arrange
+        $initialCollection = [0, 7, -4, 56];
+        $list = new MyIntegerArrayList($initialCollection);
+
+        // act
+        $sortedList = $list->sort(
+            function (int $currentItem, int $nextItem) {
+                return $currentItem <=> $nextItem;
+            }
+        );
+
+        // assert
+        $expectedSortedList = new ArrayList('int', [-4, 0, 7, 56]);
+        $this->assertEquals($expectedSortedList, $sortedList);
+    }
+
+    public function testMerge_MergeTwoCustomArrayListsOfIntegerType_ArrayListsMerged(): void
+    {
+        // arrange
+        $firstList = new MyIntegerArrayList([0, 7, -4, 56]);
+        $secondList = new MyIntegerArrayList([88, -20, 1, 5]);
+
+        // act
+        $mergedList = $firstList->merge($secondList);
+
+        // assert
+        $expectedMergedList = new ArrayList('int', [0, 7, -4, 56, 88, -20, 1, 5]);
+        $this->assertEquals($expectedMergedList, $mergedList);
+    }
+
+    public function testFilter_FilterCustomArrayListOfIntegerType_ArrayListFiltered(): void
+    {
+        // arrange
+        $initialCollection = [0, 7, -4, 56];
+        $list = new MyIntegerArrayList($initialCollection);
+
+        // act
+        $filteredList = $list->filter(
+            function (int $item) {
+                return $item > 0;
+            }
+        );
+
+        // assert
+        $expectedFilteredList = new ArrayList('int', [7, 56]);
+        $this->assertEquals($expectedFilteredList, $filteredList);
+    }
+
     public function testCreation_CreateEmptyArrayListOfIntegerType_EmptyArrayListCreated(): void
     {
         // act

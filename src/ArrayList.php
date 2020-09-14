@@ -84,7 +84,7 @@ class ArrayList extends AbstractCollection
     {
         $items = $this->items;
         \uasort($items, $callback);
-        return new static((string)$this->type, $items);
+        return new self((string)$this->type, $items);
     }
 
     /**
@@ -103,13 +103,13 @@ class ArrayList extends AbstractCollection
             $items[] = $arrayList->items;
         }
 
-        return new static((string)$this->type, \array_merge(...$items));
+        return new self((string)$this->type, \array_merge(...$items));
     }
 
     public function filter(callable $callback): ArrayList
     {
         $items = \array_filter($this->items, $callback);
-        return new static((string)$this->type, $items);
+        return new self((string)$this->type, $items);
     }
 
     private function reindexItems(): void
