@@ -1,9 +1,15 @@
 grumphp:
     tasks:
+        phpunit:
+            always_execute: true
+        clover_coverage:
+            clover_file: ./.phpunit/clover.xml
+            level: 100
+            metadata:
+                priority: -1
         phpcs:
             standard: PSR12
             ignore_patterns: [ ./tests/* ]
-        phpunit: ~
         phpstan:
             level: 5
             ignore_patterns: [ ./tests/* ]
