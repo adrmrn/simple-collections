@@ -57,7 +57,7 @@ $stack->pop(); // 6
 ### ArrayList
 It's a collection based on array and provides few methods for effective managing collection: `add($item)`, `get($index)`, `remove($item)`, `removeByIndex($index)`, `sort($callback)`, `filter($callback)` & `merge($list)`.
 ```php
-$list = new ArrayList('int', ['a', 'b', 'c', 'd']);
+$list = new ArrayList('string', ['a', 'b', 'c', 'd']);
 
 $list->add('e');
 
