@@ -14,5 +14,8 @@ jobs:
           php-version: '8.2'
           extensions: xdebug
 
+      - name: Install composer dependencies
+        run: composer install
+
       - name: Run GrumPHP checks
         run: vendor/bin/grumphp run
