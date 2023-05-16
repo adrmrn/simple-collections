@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/adrmrn/simple-collections.svg?branch=master)](https://travis-ci.com/adrmrn/simple-collections)
+[![Build Status](https://github.com/adrmrn/simple-collections/actions/workflows/grumphp-check.yml/badge.svg?branch=master)](https://github.com/adrmrn/simple-collections/actions?query=branch%3Amaster)
 
 # Simple Collections
 As you probably know, PHP language doesn’t support generic collections. Simple Collections library tries dealing with it and providing set of collection classes typed through constructor. There are few collections inspired by languages like Java or C#: `Queue`, `Stack` and `ArrayList`.
