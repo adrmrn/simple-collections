@@ -11,7 +11,7 @@ class IllegalItemTypeException extends \Exception
     public static function createWithExpectedType(Type $expectedType): IllegalItemTypeException
     {
         return new self(
-            \sprintf('Item with invalid type provided. Collection type: %s', (string)$expectedType)
+            \sprintf('Item with invalid type provided. Collection type: %s', (string) $expectedType)
         );
     }
 }

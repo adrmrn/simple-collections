@@ -8,7 +8,7 @@ use Adrmrn\SimpleCollections\Type;
 
 final class ArrayType implements Type
 {
-    public function isValid($collectionItem): bool
+    public function isValid(mixed $collectionItem): bool
     {
         return \is_array($collectionItem);
     }

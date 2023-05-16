@@ -12,7 +12,9 @@ interface Type
     public const INTEGER = 'int';
     public const STRING = 'string';
 
-    public function isValid($collectionItem): bool;
+    public function isValid(mixed $collectionItem): bool;
+
     public function isEqual(Type $type): bool;
+
     public function __toString(): string;
 }

@@ -291,16 +291,42 @@ class QueueTest extends TestCase
         $this->assertSame($expectedNumberOfItems, $numberOfItems);
     }
 
-    public function typesWithInitialCollectionsProvider(): array
+    public static function typesWithInitialCollectionsProvider(): iterable
     {
-        // [type, initial collection, expected number of items]
-        return [
-            'collectionOfArrayType' => [Type::ARRAY, [['a'], ['b']], 2],
-            'collectionOfBooleanType' => [Type::BOOLEAN, [true, true, false, true], 4],
-            'collectionOfFloatType' => [Type::FLOAT, [2.2, 43.1, 45.9], 3],
-            'collectionOfIntegerType' => [Type::INTEGER, [4, 66, 7], 3],
-            'collectionOfStringType' => [Type::STRING, ['a', 'b', 'c', 'd', 'e'], 5],
-            'collectionOfObjectType' => [ExampleClass::class, [new ExampleClass()], 1]
+        yield 'collection of array type' => [
+            'type' => Type::ARRAY,
+            'initial collection' => [['a'], ['b']],
+            'expected number of items' => 2,
+        ];
+
+        yield 'collection of boolean type' => [
+            'type' => Type::BOOLEAN,
+            'initial collection' => [true, true, false, true],
+            'expected number of items' => 4,
+        ];
+
+        yield 'collection of float type' => [
+            'type' => Type::FLOAT,
+            'initial collection' => [2.2, 43.1, 45.9],
+            'expected number of items' => 3,
+        ];
+
+        yield 'collection of integer type' => [
+            'type' => Type::INTEGER,
+            'initial collection' => [4, 66, 7],
+            'expected number of items' => 3,
+        ];
+
+        yield 'collection of string type' => [
+            'type' => Type::STRING,
+            'initial collection' => ['a', 'b', 'c', 'd', 'e'],
+            'expected number of items' => 5,
+        ];
+
+        yield 'collection of object type' => [
+            'type' => ExampleClass::class,
+            'initial collection' => [new ExampleClass()],
+            'expected number of items' => 1,
         ];
     }
 
@@ -321,7 +347,7 @@ class QueueTest extends TestCase
         $this->assertEquals($expectedObjectType, $typeAsString);
     }
 
-    public function typesAsStringWithTypesObjectsProvider(): array
+    public static function typesAsStringWithTypesObjectsProvider(): array
     {
         // [type as string, expected type object]
         return [

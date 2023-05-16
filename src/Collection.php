@@ -6,12 +6,7 @@ namespace Adrmrn\SimpleCollections;
 
 interface Collection extends \Countable, \IteratorAggregate
 {
-    /**
-     * @param mixed $searchItem
-     * @param bool $strict
-     * @return bool
-     */
-    public function contains($searchItem, bool $strict = false): bool;
+    public function contains(mixed $searchItem, bool $strict = false): bool;
 
     public function isEmpty(): bool;
 

@@ -8,7 +8,7 @@ use Adrmrn\SimpleCollections\Type;
 
 final class IntegerType implements Type
 {
-    public function isValid($collectionItem): bool
+    public function isValid(mixed $collectionItem): bool
     {
         return is_int($collectionItem);
     }

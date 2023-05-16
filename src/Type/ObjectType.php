@@ -9,11 +9,12 @@ use Adrmrn\SimpleCollections\Type;
 
 final class ObjectType implements Type
 {
-    private $className;
+    /**
+     * @var class-string
+     */
+    private string $className;
 
     /**
-     * ObjectType constructor.
-     * @param string $className
      * @throws UnsupportedCollectionTypeException
      */
     public function __construct(string $className)
@@ -25,15 +26,14 @@ final class ObjectType implements Type
         $this->className = $className;
     }
 
-    public function isValid($collectionItem): bool
+    public function isValid(mixed $collectionItem): bool
     {
         return $collectionItem instanceof $this->className;
     }
 
     public function isEqual(Type $type): bool
     {
-        return ($type instanceof self)
-            && $this->className === $type->className;
+        return ($type instanceof self) && $this->className === $type->className;
     }
 
     public function __toString(): string

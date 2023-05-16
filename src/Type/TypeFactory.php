@@ -10,8 +10,6 @@ use Adrmrn\SimpleCollections\Type;
 class TypeFactory
 {
     /**
-     * @param string $typeAsString
-     * @return Type
      * @throws UnsupportedCollectionTypeException
      */
     public static function createFromString(string $typeAsString): Type
@@ -20,34 +18,13 @@ class TypeFactory
             return new ObjectType($typeAsString);
         }
 
-        switch ($typeAsString) {
-            case 'array':
-                $type = new ArrayType();
-                break;
-
-            case 'bool':
-            case 'boolean':
-                $type = new BooleanType();
-                break;
-
-            case 'float':
-            case 'double':
-                $type = new FloatType();
-                break;
-
-            case 'int':
-            case 'integer':
-                $type = new IntegerType();
-                break;
-
-            case 'string':
-                $type = new StringType();
-                break;
-
-            default:
-                throw UnsupportedCollectionTypeException::createWithType($typeAsString);
-        }
-
-        return $type;
+        return match ($typeAsString) {
+            'array' => new ArrayType(),
+            'bool', 'boolean' => new BooleanType(),
+            'float', 'double' => new FloatType(),
+            'int', 'integer' => new IntegerType(),
+            'string' => new StringType(),
+            default => throw UnsupportedCollectionTypeException::createWithType($typeAsString),
+        };
     }
 }
