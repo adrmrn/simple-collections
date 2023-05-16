@@ -9,18 +9,10 @@ use Adrmrn\SimpleCollections\Type\TypeFactory;
 
 abstract class AbstractCollection implements Collection
 {
-    /**
-     * @var Type
-     */
-    protected $type;
-    /**
-     * @var array
-     */
-    protected $items = [];
+    protected Type $type;
+    protected array $items = [];
 
     /**
-     * AbstractCollection constructor.
-     * @param string $type
      * @throws UnsupportedCollectionTypeException
      */
     protected function __construct(string $type)
@@ -28,12 +20,7 @@ abstract class AbstractCollection implements Collection
         $this->type = TypeFactory::createFromString($type);
     }
 
-    /**
-     * @param mixed $searchItem
-     * @param bool $strict
-     * @return bool
-     */
-    public function contains($searchItem, bool $strict = false): bool
+    public function contains(mixed $searchItem, bool $strict = false): bool
     {
         return \in_array($searchItem, $this->items, $strict);
     }

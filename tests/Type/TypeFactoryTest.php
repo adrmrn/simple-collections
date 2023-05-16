@@ -57,7 +57,7 @@ class TypeFactoryTest extends TestCase
         $this->assertEquals($expectedTypeObject, $typeObject);
     }
 
-    public function scalarTypesProvider(): array
+    public static function scalarTypesProvider(): array
     {
         // [type name, expected type object]
         return [

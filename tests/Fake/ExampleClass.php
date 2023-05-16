@@ -5,5 +5,4 @@ namespace Adrmrn\SimpleCollections\Tests\Fake;
 
 class ExampleClass
 {
-
 }

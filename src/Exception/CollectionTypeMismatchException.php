@@ -11,7 +11,7 @@ class CollectionTypeMismatchException extends \Exception
     public static function createWithExpectedType(Type $expectedType): CollectionTypeMismatchException
     {
         return new self(
-            \sprintf('Provided collection\'s type is different than expected. Expected: %s', (string)$expectedType)
+            \sprintf('Provided collection\'s type is different than expected. Expected: %s', (string) $expectedType)
         );
     }
 }

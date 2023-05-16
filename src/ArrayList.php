@@ -7,29 +7,27 @@ namespace Adrmrn\SimpleCollections;
 use Adrmrn\SimpleCollections\Exception\CollectionTypeMismatchException;
 use Adrmrn\SimpleCollections\Exception\IllegalItemTypeException;
 use Adrmrn\SimpleCollections\Exception\IndexOutOfBoundsException;
+use Adrmrn\SimpleCollections\Exception\UnsupportedCollectionTypeException;
 
 class ArrayList extends AbstractCollection
 {
     /**
-     * ArrayList constructor.
-     * @param string $type
-     * @param array $collection
-     * @throws Exception\UnsupportedCollectionTypeException
+     * @throws UnsupportedCollectionTypeException
      * @throws IllegalItemTypeException
      */
     public function __construct(string $type, array $collection = [])
     {
         parent::__construct($type);
+
         foreach ($collection as $collectionItem) {
             $this->add($collectionItem);
         }
     }
 
     /**
-     * @param mixed $item
      * @throws IllegalItemTypeException
      */
-    public function add($item): void
+    public function add(mixed $item): void
     {
         if (!$this->type->isValid($item)) {
             throw IllegalItemTypeException::createWithExpectedType($this->type);
@@ -39,11 +37,9 @@ class ArrayList extends AbstractCollection
     }
 
     /**
-     * @param int $index
      * @throws IndexOutOfBoundsException
-     * @return mixed
      */
-    public function get(int $index)
+    public function get(int $index): mixed
     {
         if ($index < 0 || $index >= $this->count()) {
             throw IndexOutOfBoundsException::createWithIndex($index);
@@ -52,10 +48,7 @@ class ArrayList extends AbstractCollection
         return $this->items[$index];
     }
 
-    /**
-     * @param mixed $item
-     */
-    public function remove($item): void
+    public function remove(mixed $item): void
     {
         $index = \array_search($item, $this->items);
         if (false === $index) {
@@ -67,7 +60,6 @@ class ArrayList extends AbstractCollection
     }
 
     /**
-     * @param int $index
      * @throws IndexOutOfBoundsException
      */
     public function removeByIndex(int $index): void
@@ -84,12 +76,10 @@ class ArrayList extends AbstractCollection
     {
         $items = $this->items;
         \uasort($items, $callback);
-        return new self((string)$this->type, $items);
+        return new self((string) $this->type, $items);
     }
 
     /**
-     * @param ArrayList ...$arrayLists
-     * @return ArrayList
      * @throws CollectionTypeMismatchException
      */
     public function merge(ArrayList ...$arrayLists): ArrayList
@@ -103,13 +93,13 @@ class ArrayList extends AbstractCollection
             $items[] = $arrayList->items;
         }
 
-        return new self((string)$this->type, \array_merge(...$items));
+        return new self((string) $this->type, \array_merge(...$items));
     }
 
     public function filter(callable $callback): ArrayList
     {
         $items = \array_filter($this->items, $callback);
-        return new self((string)$this->type, $items);
+        return new self((string) $this->type, $items);
     }
 
     private function reindexItems(): void

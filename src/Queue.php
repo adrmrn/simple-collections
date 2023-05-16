@@ -6,29 +6,27 @@ namespace Adrmrn\SimpleCollections;
 
 use Adrmrn\SimpleCollections\Exception\EmptyQueueException;
 use Adrmrn\SimpleCollections\Exception\IllegalItemTypeException;
+use Adrmrn\SimpleCollections\Exception\UnsupportedCollectionTypeException;
 
 class Queue extends AbstractCollection
 {
     /**
-     * Queue constructor.
-     * @param string $type
-     * @param array $collection
-     * @throws Exception\UnsupportedCollectionTypeException
+     * @throws UnsupportedCollectionTypeException
      * @throws IllegalItemTypeException
      */
     public function __construct(string $type, array $collection = [])
     {
         parent::__construct($type);
+
         foreach ($collection as $collectionItem) {
             $this->enqueue($collectionItem);
         }
     }
 
     /**
-     * @param mixed $item
      * @throws IllegalItemTypeException
      */
-    public function enqueue($item): void
+    public function enqueue(mixed $item): void
     {
         if (!$this->type->isValid($item)) {
             throw IllegalItemTypeException::createWithExpectedType($this->type);
@@ -38,10 +36,9 @@ class Queue extends AbstractCollection
     }
 
     /**
-     * @return mixed
      * @throws EmptyQueueException
      */
-    public function peek()
+    public function peek(): mixed
     {
         if ($this->count() === 0) {
             throw EmptyQueueException::create();
@@ -51,10 +48,9 @@ class Queue extends AbstractCollection
     }
 
     /**
-     * @return mixed
      * @throws EmptyQueueException
      */
-    public function dequeue()
+    public function dequeue(): mixed
     {
         if ($this->count() === 0) {
             throw EmptyQueueException::create();

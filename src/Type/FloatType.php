@@ -8,7 +8,7 @@ use Adrmrn\SimpleCollections\Type;
 
 final class FloatType implements Type
 {
-    public function isValid($collectionItem): bool
+    public function isValid(mixed $collectionItem): bool
     {
         return \is_float($collectionItem);
     }

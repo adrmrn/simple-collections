@@ -11,25 +11,22 @@ use Adrmrn\SimpleCollections\Exception\UnsupportedCollectionTypeException;
 class Stack extends AbstractCollection
 {
     /**
-     * Stack constructor.
-     * @param string $type
-     * @param array $collection
      * @throws UnsupportedCollectionTypeException
      * @throws IllegalItemTypeException
      */
     public function __construct(string $type, array $collection = [])
     {
         parent::__construct($type);
+
         foreach ($collection as $collectionItem) {
             $this->push($collectionItem);
         }
     }
 
     /**
-     * @param mixed $item
      * @throws IllegalItemTypeException
      */
-    public function push($item): void
+    public function push(mixed $item): void
     {
         if (!$this->type->isValid($item)) {
             throw IllegalItemTypeException::createWithExpectedType($this->type);
@@ -39,10 +36,9 @@ class Stack extends AbstractCollection
     }
 
     /**
-     * @return mixed
      * @throws EmptyStackException
      */
-    public function peek()
+    public function peek(): mixed
     {
         if ($this->count() === 0) {
             throw EmptyStackException::create();
@@ -52,10 +48,9 @@ class Stack extends AbstractCollection
     }
 
     /**
-     * @return mixed
      * @throws EmptyStackException
      */
-    public function pop()
+    public function pop(): mixed
     {
         if ($this->count() === 0) {
             throw EmptyStackException::create();
