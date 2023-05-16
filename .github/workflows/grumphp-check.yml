@@ -1,0 +1,21 @@
+name: grumphp-check
+run-name: Running GrumPHP checks
+on: [push]
+jobs:
+  run-grumphp:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: xdebug
+
+      - name: Install composer dependencies
+        run: composer install
+
+      - name: Run GrumPHP checks
+        run: vendor/bin/grumphp run
